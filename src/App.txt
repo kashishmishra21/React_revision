@@ -1,0 +1,221 @@
+import { useState } from 'react'
+import heroImg from './assets/hero.png'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import './App.css'
+import Comp1 from './Component/Comp1'
+import Blog from './Component/Blog'
+
+function App() {
+const title = "React native language"
+const description = "React is a SPA UI Library"
+const author = "xyz"
+
+  return (
+   <>
+    {/* <h1>Hello React</h1> */}
+      {/* <Comp1 name="kashish"  age='32' /> */}
+    <Blog Title={title} Desc ={description} Author = {author}   bgColor="pink" >
+      <h3>this is a children crop</h3>
+      </Blog>
+    <Blog Title= "Next js" Desc = "Next js is a library of js" Author = "abc"     bgColor="green">
+            <h3>this is a children crop</h3>
+    </Blog>
+    <Blog Title="javascript" Desc =  "javascript is a programing language" Author = "123"   bgColor="orange"  >
+            <h3>this is a children crop</h3>
+      </Blog>
+   </>
+  )
+}
+
+export default App
+
+
+RENDERING LIST
+
+import React from 'react'
+
+function App() {
+  const user = 
+  [
+    {id:1 , name :"kashish"},
+    {id:2 , name : "abhay"},
+    {id:3 , name :"female"},
+  ]
+  const user2 = [1,2,3,5,6,7]
+
+  const skill = [
+     {id:1 , name :"kashish", lang : "php"},
+    {id:2 , name : "abhay", lang : "python"},
+    {id:3 , name :"female",lang :"java" },
+  ]
+
+  return (
+    <>
+    {
+      user.map((item)=>{
+        return <h1 key={item.id}>{item.name} </h1>
+      })
+    }
+
+    {/* ab user2 ka ul bnao without return () is bracket ko lgaoge to return nhi likhna hoga */}
+    <ul>
+      {user2.map((item,index)=>(
+        <li key={index}>{item}</li>
+      ))}
+
+    </ul>
+    <table>
+      <tr>
+        <th> ID</th>
+        <th> NAME </th>
+        <th> LANG </th>
+  </tr>
+        {skill.map((item)=>(
+        <tr key ={item.id}>
+          <td>{item.id}</td>
+          <td>{item.name}</td>
+          <td>{item.lang}</td>
+        </tr>
+      ))}
+    
+    </table>
+      
+
+
+    </>
+  ) 
+}
+
+export default App
+
+
+
+IF-ELSE CONDITION RENDERING
+import React from 'react'
+
+function App() {
+  const iflogged = false
+  if(iflogged){
+    return(
+      <div>
+        <button>Logout</button>
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <button>login</button>
+      </div>
+    )
+  }
+}
+
+export default App
+import React from 'react'
+import Bl from './Component/Blog'
+function App() {
+  const iflogged = false
+  if(iflogged){
+    return(
+      <div>
+        <button>Logout</button>
+      </div>
+    )
+  }
+  else{
+    return <Bl/>
+  }
+}
+
+export default App
+
+&& rending
+
+import React from 'react'
+
+function App() {
+   const loggedin = true
+   
+  return (
+   <div> {loggedin? "login is sucessfull" : "login failed"}
+    {loggedin && <h1>Hello World</h1>}
+    {loggedin && <h1>Hello World</h1>}
+    </div>
+ 
+  )
+}
+
+export default App
+
+///// isme humne usestate se array kyse bhejte hai dekha
+
+
+import React , {useState} from 'react'
+
+function App() {
+  const [Count,setCount] = useState(1)
+  const [list, setList] = useState(["item1","Item2","Item3"])
+function handleAdd(){
+  console.log("hello")
+  setList([...list,"Item4"])
+}
+
+  // var Count = 0
+  function setcount(){
+    setCount(Count+1)
+  }
+  return (
+    <div>
+      <h1 >count : {Count}</h1>
+      <button onClick={setcount}>Increament</button>
+      <ul>
+       {list.map((item)=>{
+        return <li> {item} </li>
+       })}
+        </ul>
+         < button onClick={handleAdd}>Add Item</button>
+    
+     
+    </div>
+  )
+}
+
+export default App
+import React, { useState } from 'react'
+
+function App() {
+  const[color,setColor]=useState("yellow")
+  const [toggle,settoggle] = useState(true)
+  const[fontc,setFontc]=useState("white")
+  function setToggle(){
+    if (toggle){
+      setColor("black")
+      settoggle(false)
+      setFontc("white")
+
+    }
+    else{
+      setColor("white")
+      settoggle(true)
+      setFontc("black")
+    }
+  }
+  return (
+    <div style={{width:"300px", height:"200px",border:"2px solid",backgroundColor:color,color:fontc}}>
+      <button onClick={setToggle}> Toggle change</button>
+      <h1>hello Kashish</h1>
+       <h1>hello Kashish</h1>
+        <h1>hello Kashish</h1>
+      <button onClick={()=>setColor("Red")}>Red</button>
+      <button onClick={()=>setColor("green")}>Green</button>
+      <button onClick={()=>setColor("yellow")}>yellow</button>
+      <button onClick={()=>setColor("blue")}>Blue</button>
+
+
+    </div>
+  )
+}
+
+export default App
