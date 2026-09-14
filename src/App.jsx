@@ -1,36 +1,39 @@
 import React, { useState } from 'react'
 
 function App() {
-  const[color,setColor]=useState("yellow")
-  const [toggle,settoggle] = useState(true)
-  const[fontc,setFontc]=useState("white")
-  function setToggle(){
-    if (toggle){
-      setColor("black")
-      settoggle(false)
-      setFontc("white")
-
-    }
-    else{
-      setColor("white")
-      settoggle(true)
-      setFontc("black")
-    }
+  const[toggle,setToggle]= useState(false)
+  const [data , setData] = useState({
+    username: "",
+    email: "",
+    password :""
+  })
+  function handleclick(e){
+      e.preventDefault();
+      setToggle(true )
   }
-  return (
-    <div style={{width:"300px", height:"200px",border:"2px solid",backgroundColor:color,color:fontc}}>
-      <button onClick={setToggle}> Toggle change</button>
-      <h1>hello Kashish</h1>
-       <h1>hello Kashish</h1>
-        <h1>hello Kashish</h1>
-      <button onClick={()=>setColor("Red")}>Red</button>
-      <button onClick={()=>setColor("green")}>Green</button>
-      <button onClick={()=>setColor("yellow")}>yellow</button>
-      <button onClick={()=>setColor("blue")}>Blue</button>
-
-
+ 
+   return (
+    <div>
+      <form>
+        <label>Enter Username</label>
+        <input type='text' value={data.username} onChange={(e)=> setData({...data,username:e.target.value})}/> <br/>
+      <br/>
+    <label>Enter Email</label>
+    <input type='email' value={data.email} onChange={(e)=> setData({...data,email:e.target.value})}/><br/>
+    <label>Enter password</label>
+    <input type='password' value={data.password} onChange={(e)=> setData({...data,password:e.target.value})}></input>
+    <button onClick={(e)=>{handleclick(e)}}>Submit</button>
+      </form>
+    
+      <div>
+        <h1>Your Username :-{data.username} </h1>
+        <h1>Email :- {data.email} </h1>
+        <h1>Password :- {data.password} </h1>
+      </div>
+    
     </div>
   )
 }
+
 
 export default App
