@@ -1,29 +1,36 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-import Comp1 from './Component/Comp1'
-import Blog from './Component/Blog'
+import React, { useState } from 'react'
 
 function App() {
-const title = "React native language"
-const description = "React is a SPA UI Library"
-const author = "xyz"
+  const[color,setColor]=useState("yellow")
+  const [toggle,settoggle] = useState(true)
+  const[fontc,setFontc]=useState("white")
+  function setToggle(){
+    if (toggle){
+      setColor("black")
+      settoggle(false)
+      setFontc("white")
 
+    }
+    else{
+      setColor("white")
+      settoggle(true)
+      setFontc("black")
+    }
+  }
   return (
-   <>
-    {/* <h1>Hello React</h1> */}
-      {/* <Comp1 name="kashish"  age='32' /> */}
-    <Blog Title={title} Desc ={description} Author = {author}   bgColor="pink" >
-      <h3>this is a children crop</h3>
-      </Blog>
-    <Blog Title= "Next js" Desc = "Next js is a library of js" Author = "abc"     bgColor="green">
-            <h3>this is a children crop</h3>
-    </Blog>
-    <Blog Title="javascript" Desc =  "javascript is a programing language" Author = "123"   bgColor="orange"  >
-            <h3>this is a children crop</h3>
-      </Blog>
-   </>
+    <div style={{width:"300px", height:"200px",border:"2px solid",backgroundColor:color,color:fontc}}>
+      <button onClick={setToggle}> Toggle change</button>
+      <h1>hello Kashish</h1>
+       <h1>hello Kashish</h1>
+        <h1>hello Kashish</h1>
+      <button onClick={()=>setColor("Red")}>Red</button>
+      <button onClick={()=>setColor("green")}>Green</button>
+      <button onClick={()=>setColor("yellow")}>yellow</button>
+      <button onClick={()=>setColor("blue")}>Blue</button>
+
+
+    </div>
   )
 }
+
+export default App
