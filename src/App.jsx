@@ -8,7 +8,6 @@ function App() {
     password :""
   })
   function handleclick(e){
-    console.log(toggle)
       e.preventDefault();
       setToggle(true )
   }
